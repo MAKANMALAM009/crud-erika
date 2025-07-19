@@ -14,7 +14,7 @@ if (!isset($_SESSION["login"])) {
 }
 
 // membatasi halaman sesuai user login
-if($_SESSION["level"] != 1 and $_SESSION["level"] != 3) {
+if ($_SESSION["level"] != 1 and $_SESSION["level"] != 3) {
     echo "<script>
             alert('perhatian anda tidak punya hak akses');
             document.location.href = 'crud-modal.php';
@@ -39,6 +39,8 @@ $data_mahasiswa = select("SELECT * FROM mahasiswa ORDER BY id_mahasiswa DESC");
 
     <a href="download-excel-mahasiswa.php" class="btn btn-success mb-1"><i class="fasfa-file-excel"></i>download excel</a>
 
+    <a href="Download-pdf-mahasiswa.php" class="btn btn-danger mb-1"><i class=" fas fa-file-pdf"></i>Download PDF</a>
+
 
     <table class="table table-bordered table-striped mt-3" id="table">
         <thead>
@@ -49,7 +51,6 @@ $data_mahasiswa = select("SELECT * FROM mahasiswa ORDER BY id_mahasiswa DESC");
                 <th>Jenis Kelamin</th>
                 <th>Telepon</th>
                 <th>Email</th>
-                <th>Foto</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -64,7 +65,6 @@ $data_mahasiswa = select("SELECT * FROM mahasiswa ORDER BY id_mahasiswa DESC");
                     <td><?= $mahasiswa['jk']; ?></td>
                     <td><?= $mahasiswa['telepon']; ?></td>
                     <td><?= $mahasiswa['email']; ?></td>
-                    <td><?= $mahasiswa['foto']; ?></td>
                     <td class="text-center" width="15%">
                         <a href="detail-mahasiswa.php?id_mahasiswa=<?= $mahasiswa['id_mahasiswa']; ?>" class="btn btn-secondary btn-sm"> Detail</a>
                         <a href="ubah-mahasiswa.php?id_mahasiswa=<?= $mahasiswa['id_mahasiswa']; ?>" class="btn btn-success btn-sm"> Ubah</a>

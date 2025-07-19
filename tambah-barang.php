@@ -1,35 +1,37 @@
-<?php 
+<?php
+
 session_start();
 // membatasi halaman sebelum login
-if (!isset($_SESSION["login"])) {
+if(!isset($_SESSION['login'])) {
     echo "<script>
-            alert('login dulu');
+            alert('Silahkan Login Terlebih Dahulu');
             document.location.href = 'login.php';
           </script>";
     exit;
 }
 
-$title = 'Tambah Barang';
+$title= 'Tambah Barang';
+include 'layout/header.php';
 
-include 'layout/header.php'; 
-// check apakah tombol tambah ditekan
 if (isset($_POST['tambah'])) {
-    if (create_barang($_POST) > 0) {
+    if(create_barang($_POST) > 0){
         echo "<script>
-                alert('Data Barang Berhasil Ditambahkan');
-                document.location.href = 'index.php';
-                </script>";
-    }   else {
-            echo "<script>
+            alert('Data Barang Berhasil Ditambahkan');
+            document.location.href = 'index.php';
+            </script>";
+    } else {
+        echo "<script>
                 alert('Data Barang Gagal Ditambahkan');
                 document.location.href = 'index.php';
-                </script>"; 
+                </script>";
     }
 }
 
 ?>
 
-<div class="container mt-5">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <div class="container mt-5">
     <h1>Tambah Data Barang</h1>
     <hr>
     <form action="" method="post">
@@ -43,10 +45,11 @@ if (isset($_POST['tambah'])) {
         </div>
         <div class="mb-3">
             <label for="harga" class="form-label">Harga Barang</label>
-            <input type="number" class="form-control" id="harga" name="harga" placeholder="Harga Barang..." required>   
+            <input type="number" class="form-control" id="harga" name="harga" placeholder="Harga Barang..." required>
         </div>
-       <input type="submit" class="btn btn-primary" id="tambah" name="tambah" style="float: right;">
-    </form>
-</div>
-
-<?php include 'layout/footer.php'; ?>
+        <input type="submit" name="tambah" class="btn btn-primary float-end" value="simpan">
+          <div class="mb-3">
+        </div>
+  </div>
+  </div>
+  <?php include 'layout/footer.php'; ?>

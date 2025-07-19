@@ -41,10 +41,17 @@ $mahasiswa = select("SELECT * FROM mahasiswa WHERE id_mahasiswa = $id_mahasiswa"
             <th>Telepon</th>
             <td><?= htmlspecialchars($mahasiswa['telepon']); ?></td>
         </tr>
+
+        <tr>
+            <th>Alamat</th>
+            <td><?= $mahasiswa['alamat']; ?></td>
+        </tr>
+
         <tr>
             <th>Email</th>
             <td><?= htmlspecialchars($mahasiswa['email']); ?></td>
         </tr>
+        
         <tr>
             <th>Foto</th>
             <td>
